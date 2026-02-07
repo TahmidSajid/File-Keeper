@@ -16,6 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    @include('partisals.header-asset')
 </head>
 
 <body>
@@ -127,6 +129,11 @@
             @yield('content')
         </main>
     </div>
+
+    @include('partisals.footer-asset')
+    @include('partisals.notify')
+
+
 </body>
 
 </html>

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -15,51 +19,27 @@ class ProfileController extends Controller
         return view('sections.profile');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function passwordUpdate(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'current_password'      => 'required|current_password',
+            'password'              => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|min:8',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $user = User::authUser()->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        try {
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+            $user->update([
+                'password'  => Hash::make($validated['password']),
+            ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        } catch (Exception $e) {
+            return back()->with('error','Somewhing went wronk! Please try again');
+        }
+
+        return back()->with('success' ,'Password Updated Successfuly');
     }
 }
