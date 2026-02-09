@@ -32,20 +32,10 @@ class ProfileController extends Controller
             'email' => 'required|email',
         ]);
 
+        $image_name= null;
 
         if($request->hasFile('profile_img')){
-            $manager = new ImageManager(new Driver());
-
-            $image = $manager->read($request->file('profile_img'));
-
-            $image->resize(300,300, function($constraint){
-                $constraint->aspectRation();
-                $constraint->upsize();
-            });
-
-            $image_name = Str::uuid().'.webp';
-
-            $image->toWebp(80)->save(public_path('assets/frontend/user/'.$image_name));
+            $image_name = upload_image($request->file('profile_img'), 'profile');
         }
 
 
