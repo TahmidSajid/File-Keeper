@@ -19,7 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('sections.profile');
+        return view('admin.sections.profile');
     }
 
     /**

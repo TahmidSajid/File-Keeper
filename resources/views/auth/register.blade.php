@@ -1,77 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="app app-auth-sign-up align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        </div>
+        <div class="app-auth-container">
+            <div class="logo mb-4">
+                <a href="index.html">File Keeper</a>
             </div>
+
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="auth-credentials m-b-xxl">
+                    <label for="signUpUsername" class="form-label">Name</label>
+                    <input type="email" class="form-control m-b-md" id="signUpUsername" aria-describedby="signUpUsername"
+                        placeholder="Enter Name" name="name" value="{{ old('name') }}">
+
+                    <label for="signUpEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control m-b-md" id="signUpEmail" aria-describedby="signUpEmail"
+                        placeholder="example@neptune.com" name="email" value="{{ old('email') }}">
+
+                    <label for="signUpPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control m-b-md" id="signUpPassword" aria-describedby="signUpPassword"
+                        name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+
+                    <label for="signUpPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="signUpPassword" aria-describedby="signUpPassword"
+                        name="password_confirmation" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                </div>
+
+                <div class="auth-submit">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+            <div class="divider"></div>
+
+            <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account? <a
+                    href="{{ route('login') }}">Sign In</a></p>
         </div>
     </div>
-</div>
 @endsection
