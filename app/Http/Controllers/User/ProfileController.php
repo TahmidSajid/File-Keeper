@@ -28,8 +28,9 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
+            'firstname' => 'required|string',
+            'lastname'  => 'required|string',
+            'email'     => 'required|email',
         ]);
 
         $image_name= null;
@@ -43,8 +44,9 @@ class ProfileController extends Controller
 
         try {
             $user->update([
-                'name'  => $validated['name'],
-                'email'  => $validated['email'],
+                'firstname' => $validated['firstname'],
+                'lastname'  => $validated['lastname'],
+                'email'     => $validated['email'],
             ]);
 
             if($request->hasFile('profile_img')){

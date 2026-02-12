@@ -13,9 +13,13 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="auth-credentials m-b-xxl">
-                    <label for="signUpUsername" class="form-label">Name</label>
-                    <input type="email" class="form-control m-b-md" id="signUpUsername" aria-describedby="signUpUsername"
-                        placeholder="Enter Name" name="name" value="{{ old('name') }}">
+                    <label for="signUpUsername" class="form-label">First Name</label>
+                    <input type="name" class="form-control m-b-md" id="signUpUsername" aria-describedby="signUpUsername"
+                        placeholder="Enter Name" name="firstname" value="{{ old('firstname') }}">
+
+                    <label for="signUpUsername" class="form-label">Last Name</label>
+                    <input type="name" class="form-control m-b-md" id="signUpUsername" aria-describedby="signUpUsername"
+                        placeholder="Enter Name" name="lastname" value="{{ old('lastname') }}">
 
                     <label for="signUpEmail" class="form-label">Email address</label>
                     <input type="email" class="form-control m-b-md" id="signUpEmail" aria-describedby="signUpEmail"

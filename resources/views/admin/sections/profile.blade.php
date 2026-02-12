@@ -73,9 +73,14 @@
                                         <input type="file" class="form-control" id="profile-img" name="profile_img">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ auth()->user()->name }}">
+                                        <label for="name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="name" name="firstname"
+                                            value="{{ auth()->user()->firstname }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="name" name="lastname"
+                                            value="{{ auth()->user()->lastname }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email address</label>

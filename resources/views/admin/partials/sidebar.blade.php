@@ -1,11 +1,15 @@
         <div class="app-sidebar">
             <div class="logo">
-                <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
+                <a href="index.html" class="logo-icon"><span class="logo-text">File Keeper</span></a>
                 <div class="sidebar-user-switcher user-activity-online">
-                    <a href="#">
-                        <img src="{{ asset('assets/frontend/images/avatars/avatar.png') }}">
+                    <a href="{{ route('user.profile.index') }}">
+                        @if (auth()->user()->image)
+                            <img src="{{ asset('assets/frontend/user/' . auth()->user()->image) }}" alt="...">
+                        @else
+                            <img src="{{ asset('assets/frontend/default/user-default.jpg') }}" alt="...">
+                        @endif
                         <span class="activity-indicator"></span>
-                        <span class="user-info-text">Chloe<br><span class="user-state-info">On a call</span></span>
+                        <span class="user-info-text">{{ auth()->user()->fullname }}</span>
                     </a>
                 </div>
             </div>
