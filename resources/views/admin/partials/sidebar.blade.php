@@ -27,6 +27,10 @@
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>
                     <li class="page">
+                        <a href="{{ route('user.drive.index') }}" class="active"><i
+                                class="material-icons-two-tone">settings_applications</i>Drive</a>
+                    </li>
+                    <li class="page">
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

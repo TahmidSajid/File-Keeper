@@ -60,6 +60,10 @@ return [
             'report' => false,
         ],
 
+        'google_dynamic' => [
+            'driver' => 'google_dynamic',
+        ]
+
     ],
 
     /*

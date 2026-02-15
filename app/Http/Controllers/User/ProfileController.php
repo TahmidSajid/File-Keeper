@@ -6,11 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 
 class ProfileController extends Controller
 {
@@ -36,6 +32,7 @@ class ProfileController extends Controller
         $image_name= null;
 
         if($request->hasFile('profile_img')){
+            delete_image(auth()->user()->image, 'profile');
             $image_name = upload_image($request->file('profile_img'), 'profile');
         }
 
