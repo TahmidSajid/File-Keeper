@@ -3,18 +3,22 @@
 namespace App\Http\Middleware\Admin;
 
 use Closure;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (!auth()->guard('admin')->check()) {
+            return redirect()->route('admin.login');
+        }
         return $next($request);
     }
 }

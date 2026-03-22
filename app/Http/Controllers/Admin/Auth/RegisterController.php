@@ -7,11 +7,11 @@ use App\Models\Admin\Admin;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -46,25 +46,42 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get the guard to be used during registration.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-    */
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
-    /**
      * Show the application registration form.
      *
      * @return \Illuminate\View\View
     */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('admin.auth.register');
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return Admin::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 
         /**
      * Handle a registration request for the application.
@@ -90,36 +107,15 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get the guard to be used during registration.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function validator(array $data)
+    protected function guard()
     {
-        return Validator::make($data, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return Auth::guard('admin');
     }
 
-    /**
-     * Create a new admin instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\Admin\Admin
-     */
-    protected function create(array $data)
-    {
-        return Admin::create([
-            'firstname' => $data['firstname'],
-            'lastname'  => $data['lastname'],
-            'email'     => $data['email'],
-            'password'  => Hash::make($data['password']),
-        ]);
-    }
 
     /**
      * The user has been registered.
@@ -127,9 +123,9 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
      * @return mixed
-     */
+    */
     protected function registered(Request $request, $user)
     {
-        return redirect()->intended(route('admin.profile.index'));
+        // return redirect()->intended(route('admin.dashboard'));
     }
 }
