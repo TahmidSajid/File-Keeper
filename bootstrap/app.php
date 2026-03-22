@@ -12,9 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware('web')
-            ->prefix('user')
-            ->name('user.')
-            ->group(base_path('routes/user.php'));
+            ->prefix('admin')
+            ->name('admin.')
+            ->group(base_path('routes/admin.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {

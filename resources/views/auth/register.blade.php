@@ -10,7 +10,7 @@
                 <a href="index.html">File Keeper</a>
             </div>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('admin.register') }}">
                 @csrf
                 <div class="auth-credentials m-b-xxl">
                     <label for="signUpUsername" class="form-label">First Name</label>

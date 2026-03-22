@@ -14,8 +14,8 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card">
-                            @if (auth()->user()->image)
-                                <img src="{{ asset('assets/frontend/user/' . auth()->user()->image) }}" class="card-img-top"
+                            @if (auth()->guard('admin')->user()->image)
+                                <img src="{{ asset('assets/frontend/user/' . auth()->guard('admin')->user()->image) }}" class="card-img-top"
                                     alt="...">
                             @else
                                 <img src="{{ asset('assets/frontend/default/user-default.jpg') }}" class="card-img-top"
@@ -23,7 +23,7 @@
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">Password Update</h5>
-                                <form action="{{ route('user.profile.password.update') }}" method="POST">
+                                <form action="{{ route('admin.profile.password.update') }}" method="POST">
                                     @method('PUT')
                                     @csrf
                                     <div class="row g-3">
@@ -64,7 +64,7 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('user.profile.update') }}" method="POST"
+                                <form action="{{ route('admin.profile.update') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf

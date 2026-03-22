@@ -6,7 +6,7 @@
     <script src="{{ asset('assets/frontend/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('assets/frontend/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
     <script src="{{ asset('assets/frontend/plugins/pace/pace.min.js')}}"></script>
-    <script src="{{ asset('assets/frontend/plugins/apexcharts/apexcharts.min.js')}}"></script>
+    {{-- <script src="{{ asset('assets/frontend/plugins/apexcharts/apexcharts.min.js')}}"></script> --}}
     <script src="{{ asset('assets/frontend/js/main.min.js')}}"></script>
     <script src="{{ asset('assets/frontend/js/custom.js')}}"></script>
     <script src="{{ asset('assets/frontend/js/pages/dashboard.js')}}"></script>

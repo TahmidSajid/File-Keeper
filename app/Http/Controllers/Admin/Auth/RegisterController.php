@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
@@ -45,6 +45,26 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+    */
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+    */
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
 
         /**
      * Handle a registration request for the application.
@@ -86,14 +106,14 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new admin instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Admin\Admin
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Admin::create([
             'firstname' => $data['firstname'],
             'lastname'  => $data['lastname'],
             'email'     => $data['email'],
@@ -110,6 +130,6 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-
+        return redirect()->intended(route('admin.profile.index'));
     }
 }

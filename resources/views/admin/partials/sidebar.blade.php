@@ -2,7 +2,7 @@
             <div class="logo">
                 <a href="index.html" class="logo-icon"><span class="logo-text">File Keeper</span></a>
                 <div class="sidebar-user-switcher user-activity-online">
-                    <a href="{{ route('user.profile.index') }}">
+                    <a href="{{ route('admin.profile.index') }}">
                         @if (auth()->user()->image)
                             <img src="{{ asset('assets/frontend/user/' . auth()->user()->image) }}" alt="...">
                         @else
@@ -23,11 +23,11 @@
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
                     <li class="page">
-                        <a href="{{ route('user.profile.index') }}" class="active"><i
+                        <a href="{{ route('admin.profile.index') }}" class="active"><i
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>
                     <li class="page">
-                        <a href="{{ route('user.drive.index') }}" class="active"><i
+                        <a href="{{ route('admin.drive.index') }}" class="active"><i
                                 class="material-icons-two-tone">settings_applications</i>Drive</a>
                     </li>
                     <li class="page">

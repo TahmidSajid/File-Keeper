@@ -29,7 +29,7 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <a href="{{ route('register') }}">SignUp</a>
+                    <a href="{{ route('admin.registration') }}">SignUp</a>
                 </div>
             </div>
         </div>
