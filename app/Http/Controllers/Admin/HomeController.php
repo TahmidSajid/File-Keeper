@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-    public function index()
+    public function dashboard()
     {
-        return view('admin.pages.home');
+        $page_title = "Dashboard";
+
+        return view('admin.pages.home',compact('page_title'));
     }
 
     public function logout(Request $request)
@@ -18,8 +20,6 @@ class HomeController extends Controller
         auth()->guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-
         return back();
     }
 }

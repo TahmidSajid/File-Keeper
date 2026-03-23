@@ -18,11 +18,11 @@
                     <li class="sidebar-title">
                         Side Manue
                     </li>
-                    {{-- <li class="page">
-                        <a href="{{ route('home') }}" class="active"><i
+                    <li class="page">
+                        <a href="{{ route('admin.dashboard') }}" class="active"><i
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
-                    <li class="page">
+                    {{-- <li class="page">
                         <a href="{{ route('admin.profile.index') }}" class="active"><i
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>

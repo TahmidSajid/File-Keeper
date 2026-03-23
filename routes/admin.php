@@ -32,6 +32,6 @@ Route::controller(ResetPasswordController::class)->group(function () {
 
 
 Route::middleware('admin')->controller(HomeController::class)->group(function () {
-    Route::get('dashboard', 'index')->name('dashboard');
+    Route::get('dashboard', 'dashboard')->name('dashboard');
     Route::post('logout', 'logout')->name('logout');
 });
