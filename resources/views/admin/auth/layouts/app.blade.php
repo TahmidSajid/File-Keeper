@@ -25,18 +25,8 @@
 </head>
 
 <body>
-    <div class="app align-content-stretch d-flex flex-wrap">
 
-        @include('admin.partisals.sidebar')
-
-
-        <div class="app-container">
-            @yield('content')
-        </div>
-
-
-    </div>
-
+    @yield('content')
 
     @include('admin.partisals.footer-asset')
     @include('admin.partisals.notify')
