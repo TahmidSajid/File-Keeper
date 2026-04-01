@@ -26,10 +26,10 @@
                         <a href="{{ route('admin.profile.index') }}" class="active"><i
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>
-                    {{-- <li class="page">
+                    <li class="{{ Route::currentRouteName() == 'admin.drive.index' ? 'active-page' : 'page' }}">
                         <a href="{{ route('admin.drive.index') }}" class="active"><i
                                 class="material-icons-two-tone">settings_applications</i>Drive</a>
-                    </li> --}}
+                    </li>
                     <li class="{{ Route::currentRouteName() == 'admin.logout' ? 'active-page' : 'page' }}">
                         <a href="{{ route('admin.logout') }}"
                             onclick="event.preventDefault();
