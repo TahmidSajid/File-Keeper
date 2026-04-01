@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,7 +32,18 @@ Route::controller(ResetPasswordController::class)->group(function () {
 });
 
 
-Route::middleware('admin')->controller(HomeController::class)->group(function () {
-    Route::get('dashboard', 'dashboard')->name('dashboard');
-    Route::post('logout', 'logout')->name('logout');
+Route::middleware('admin')->group(function(){
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('dashboard', 'dashboard')->name('dashboard');
+        Route::post('logout', 'logout')->name('logout');
+    });
+
+    Route::prefix('profile')->name('profile.')->controller(ProfileController::class)->group(function () {
+        Route::get('index','index')->name('index');
+        Route::put('update','update')->name('update');
+        Route::put('password/update','passwordUpdate')->name('password.update');
+    });
 });
+
+

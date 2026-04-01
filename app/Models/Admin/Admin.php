@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Authenticatable
 {
@@ -32,6 +33,7 @@ class Admin extends Authenticatable
         'lastname',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -62,5 +64,10 @@ class Admin extends Authenticatable
         return Attribute::make(
             get: fn() => $this->firstname." ". $this->lastname,
         );
+    }
+
+
+    public function scopeAuthUser($query){
+        return $query->where('id',Auth::guard('admin')->user()->id);
     }
 }

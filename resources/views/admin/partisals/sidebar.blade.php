@@ -4,7 +4,7 @@
                 <div class="sidebar-user-switcher user-activity-online">
                     {{-- <a href="{{ route('admin.profile.index') }}"> --}}
                         @if (auth()->guard('admin')->user()->image)
-                            <img src="{{ asset('assets/frontend/user/' . auth()->user()->image) }}" alt="...">
+                            <img src="{{ asset('assets/frontend/user/' . auth()->guard('admin')->user()->image) }}" alt="...">
                         @else
                             <img src="{{ asset('assets/frontend/default/user-default.jpg') }}" alt="...">
                         @endif
@@ -22,11 +22,11 @@
                         <a href="{{ route('admin.dashboard') }}" class="active"><i
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
-                    {{-- <li class="page">
+                    <li class="page">
                         <a href="{{ route('admin.profile.index') }}" class="active"><i
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>
-                    <li class="page">
+                    {{-- <li class="page">
                         <a href="{{ route('admin.drive.index') }}" class="active"><i
                                 class="material-icons-two-tone">settings_applications</i>Drive</a>
                     </li> --}}
