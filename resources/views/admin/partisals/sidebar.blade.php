@@ -18,11 +18,11 @@
                     <li class="sidebar-title">
                         Side Manue
                     </li>
-                    <li class="page">
+                    <li class={{ Route::currentRouteName() == 'admin.dashboard' ? 'active-page' : 'page' }}>
                         <a href="{{ route('admin.dashboard') }}" class="active"><i
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
-                    <li class="page">
+                    <li class={{ Route::currentRouteName() == 'admin.profile.index' ? 'active-page' : 'page' }}>
                         <a href="{{ route('admin.profile.index') }}" class="active"><i
                                 class="material-icons-two-tone">account_box</i>Profile</a>
                     </li>
@@ -30,7 +30,7 @@
                         <a href="{{ route('admin.drive.index') }}" class="active"><i
                                 class="material-icons-two-tone">settings_applications</i>Drive</a>
                     </li> --}}
-                    <li class="page">
+                    <li class="{{ Route::currentRouteName() == 'admin.logout' ? 'active-page' : 'page' }}">
                         <a href="{{ route('admin.logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
