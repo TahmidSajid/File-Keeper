@@ -29,7 +29,7 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <a href="{{ route('admin.register') }}">SignUp</a>
+                    <a href="{{ route('admin.register') }}">SignUp</a> <p class="auth-description">--OR--</p> <a href="{{ route('admin.password.request') }}">Forgot Password</a>
                 </div>
             </div>
         </div>

@@ -23,6 +23,10 @@
         toastr.warning("{{ session('warning') }}");
     @endif
 
+    @if (session('status'))
+        toastr.success("{{ session('status') }}");
+    @endif
+
     // Validation errors
     @if ($errors->any())
         @foreach ($errors->all() as $error)
