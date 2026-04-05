@@ -15,11 +15,16 @@ return Application::configure(basePath: dirname(__DIR__))
             ->prefix('admin')
             ->name('admin.')
             ->group(base_path('routes/admin.php'));
+            Route::middleware('web')
+            ->prefix('user')
+            ->name('user.')
+            ->group(base_path('routes/user.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'admin' => \App\Http\Middleware\Admin\CheckAdmin::class,
+            'user' => \App\Http\Middleware\User\CheckUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
